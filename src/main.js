@@ -1,10 +1,11 @@
 import './styles/main.scss';
-import projects from './data/projects.js';
+import projects, { about, assetUrl } from './data/projects.js';
 import createSections from './ui/ProjectSections.js';
 import ProjectPanel from './ui/ProjectPanel.js';
 
 let viewer;
-let activeProject = projects[0];
+const entries = [about, ...projects];
+let activeProject = entries[0];
 const panel = new ProjectPanel((open) => {
   document.body.classList.toggle('panel-open', open);
   if (viewer) viewer.panelOpen = open;
@@ -12,14 +13,18 @@ const panel = new ProjectPanel((open) => {
 document.addEventListener('click', (event) => {
   if ((!viewer || document.querySelector('#interaction').style.display === 'none') && !event.target.closest('a, button, .panel')) panel.close();
 });
-createSections(projects, (project) => {
+const openEntry = (entry) => {
+  if (entry.kind === 'about') window.location.assign(assetUrl(entry.page));
+  else panel.open(entry);
+};
+createSections(entries, (project) => {
   if (activeProject.id !== project.id) panel.close();
   activeProject = project; viewer?.activate(project);
-}, (project) => panel.open(project));
+}, openEntry);
 
 try {
   const { default: PortfolioScene } = await import('./three/Scene.js');
-  viewer = new PortfolioScene(projects, (project) => panel.open(project), () => panel.close());
+  viewer = new PortfolioScene(entries, openEntry, () => panel.close());
   viewer.activate(activeProject);
   viewer.panelOpen = panel.isOpen;
 } catch (error) {

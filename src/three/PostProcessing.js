@@ -2,7 +2,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPixelatedPass } from 'three/addons/postprocessing/RenderPixelatedPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
-export const renderSettings = { pixelSize: 2, normalEdgeStrength: 0.25, depthEdgeStrength: 0.35 };
+export const renderSettings = { pixelSize: 1, normalEdgeStrength: 0.25, depthEdgeStrength: 0.35 };
 
 export default class PostProcessing {
   constructor(renderer, scene, camera) {

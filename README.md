@@ -1,6 +1,6 @@
 # MU — Games & experiments
 
-A minimal, static game-development portfolio. Vanilla JavaScript, Vite, SCSS and Three.js; no framework or backend. The three projects and geometric sculptures are original placeholders. `AGENTS.md` is the permanent project specification.
+A minimal, static game-development portfolio. Vanilla JavaScript, Vite, SCSS and Three.js; no framework or backend. The homepage includes About Me and three games, with configurable GLB models or geometric placeholders. `AGENTS.md` is the permanent project specification.
 
 ## Run locally
 
@@ -25,6 +25,18 @@ The included workflow builds and uploads `dist/`. `vite.config.js` uses `base: '
 
 ## Edit the portfolio
 
+The homepage begins with an About Me object, followed by the games. Clicking the About object or title opens `about.html`; the Games navigation link jumps to the first game. Its placeholder bust, warm accent line, and divider distinguish it from the project sections.
+
+Edit the named `about` export in **`src/data/projects.js`** to set your introduction and personal interests. The initial text and three interests are explicitly editable placeholders. Each interest supports any number of photos with alt text and optional captions:
+
+```js
+images: [
+  { src: 'images/my-photo.jpg', alt: 'Describe the photograph', caption: 'Optional caption' },
+],
+```
+
+Place the photos in `public/images/`. An empty `images` array shows a photo placeholder. The About model supports the same `model`, `modelScale`, `rotationOffset`, and camera options as games. Vite builds both `index.html` and `about.html` for GitHub Pages; individual game case-study pages are still future work.
+
 All project content lives in **`src/data/projects.js`**. The homepage sections and project panels use that data. Add an object to add another project; the counters and scroll detection update automatically.
 
 Place future GLB models in **`public/models/`**, then change the relevant `model: null` to `model: 'models/my-project.glb'`. The loader preloads configured models, caches them, centers their bounds, and normalizes the longest dimension. If loading fails, the geometric placeholder remains available. Textures preserve their original filtering by default.
@@ -47,6 +59,25 @@ Optional per-project overrides:
 For Draco-compressed GLBs later, configure a Three.js `DRACOLoader` and call `loader.setDRACOLoader(...)` in `ModelManager.js`; host its decoder files with the static assets. No decoder or extra asset pipeline is downloaded in this first version.
 
 The **View project** links intentionally point to future `projects/*.html` pages; those pages do not exist yet. Their coming-soon label makes this explicit. When adding pages later, include them as Vite multi-page build entries. Do not place unprocessed source JavaScript in `public/`.
+
+## Project popup media
+
+Each game's `media` array in `src/data/projects.js` controls the gallery order. Replace `media: placeholderMedia` with your own entries:
+
+```js
+media: [
+  { type: 'image', src: 'images/small/screenshot-01.webp', alt: 'Two players exploring a dark room' },
+  { type: 'image', src: 'images/small/screenshot-02.webp', alt: 'A view of the maze' },
+  { type: 'youtube', videoId: 'YOUR_VIDEO_ID', title: 'Small — gameplay trailer' },
+  { type: 'video', src: 'videos/small/gameplay.webm', poster: 'images/small/gameplay-thumb.webp', title: 'Small — gameplay footage' },
+],
+```
+
+Put images in `public/images/small/` and local videos in `public/videos/small/`. Use paths without a leading slash or `public/` prefix. YouTube entries take an actual 11-character video ID, not iframe HTML. Their thumbnail is generated automatically; add `thumbnail: 'images/small/trailer-thumb.webp'` for a custom thumbnail. Image entries can also provide a separate `thumbnail` file for faster loading. Empty media arrays hide the gallery.
+
+The popup uses a large contained preview and native horizontally scrolling thumbnail buttons. Arrow controls appear on overflow. The first item is selected on opening; a first-item YouTube video stays a poster until explicitly played. Selecting a YouTube thumbnail creates a privacy-enhanced iframe and requests playback; browser settings may still require using the player's play button. Local videos have native controls and do not autoplay. Switching media, closing the popup, or changing projects tears down players so playback cannot continue invisibly. No external gallery library or YouTube JavaScript API is needed.
+
+The shared `placeholderMedia` entries are deliberately labeled local SVG placeholders, not gameplay screenshots. No example YouTube video or local test footage is published with the site.
 
 ## Adjust the viewer
 
@@ -72,7 +103,7 @@ The **View project** links intentionally point to future `projects/*.html` pages
 
 ## Files
 
-`src/main.js` connects the data, UI and lazy-loaded viewer. `src/three/` owns rendering, models and pointer interaction. `src/ui/` owns HTML sections and panels. `public/models/` and `public/images/` are ready for your own assets. No case-study pages or additional portfolio sections are included.
+`src/main.js` connects the data, UI and lazy-loaded viewer. `src/three/` owns rendering, models and pointer interaction. `src/ui/` owns HTML sections and panels. `src/about.js` renders the introduction, interests, and image galleries in `about.html`. `public/models/` and `public/images/` hold your assets. Individual game case-study pages are not included.
 
 ## First-version verification
 

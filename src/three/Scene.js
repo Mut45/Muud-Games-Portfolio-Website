@@ -35,6 +35,7 @@ export default class PortfolioScene {
     this.controls.mouseButtons = { LEFT: THREE.MOUSE.ROTATE, MIDDLE: null, RIGHT: null };
     this.controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: null };
     this.panelOpen = false;
+    this.panelElement = document.querySelector('#project-panel');
     this.offset = new THREE.Vector2();
     this.activate(projects[0], true);
     this.resize = () => {
@@ -85,7 +86,8 @@ export default class PortfolioScene {
       if (p === 1) { this.transition = null; this.controls.enabled = true; this.controls.target.set(0, 0, 0); this.controls.update(); }
     } else this.controls.update();
     const mobile = innerWidth < 700;
-    const tx = this.panelOpen && !mobile ? innerWidth * 0.14 : 0;
+    // Center the model in the space left of the panel, using its actual width.
+    const tx = this.panelOpen && !mobile ? (innerWidth - this.panelElement.offsetLeft) / 2 : 0;
     const ty = this.panelOpen && mobile ? innerHeight * 0.2 : 0;
     const speed = this.motion.matches ? 100 : 9;
     this.offset.x = THREE.MathUtils.damp(this.offset.x, tx, speed, delta);

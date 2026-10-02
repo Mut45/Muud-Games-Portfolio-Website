@@ -29,7 +29,13 @@ export default class ModelManager {
       const mesh = new THREE.Mesh(geometry, mat);
       mesh.position.set(...position); group.add(mesh); return mesh;
     };
-    if (project.placeholder === 'structure') {
+    if (project.placeholder === 'portrait') {
+      // A small abstract bust in an open frame: a distinct personal-section object.
+      add(new THREE.IcosahedronGeometry(0.42, 1), [0, 0.57, 0]);
+      add(new THREE.CylinderGeometry(0.23, 0.7, 0.8, 8), [0, -0.22, 0]);
+      const frame = add(new THREE.TorusGeometry(1.18, 0.045, 6, 64));
+      frame.rotation.y = 0.18;
+    } else if (project.placeholder === 'structure') {
       // A hollow architectural cube, built from twelve beams.
       for (const a of [-0.8, 0.8]) for (const b of [-0.8, 0.8]) {
         add(new THREE.BoxGeometry(0.28, 1.88, 0.28), [a, 0, b]);

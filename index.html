@@ -12,24 +12,30 @@
   <body>
     <a class="skip-link" href="#games">Skip to projects</a>
     <header class="navigation">
-      <a class="wordmark" href="#games" aria-label="MU home"><img src="./images/logo-icon.svg" alt="" width="106" height="190" /></a>
+      <a class="wordmark" href="#about" aria-label="MU home"><img src="./images/logo-icon.svg" alt="" width="106" height="190" /></a>
+      <a href="#about">About me</a>
       <a href="#games">Games <span class="nav-count">/ 03</span></a>
       <span class="nav-note">Independent games & experiments</span>
     </header>
     <div id="scene" aria-hidden="true"></div>
     <div id="interaction" aria-hidden="true"></div>
-    <main id="games" aria-label="Selected projects"></main>
+    <main id="portfolio" aria-label="About me and selected projects"></main>
     <p class="viewer-status" role="status"></p>
     <footer class="viewer-footer"><span>Drag to explore <span class="separator">/</span> Click to discover</span><span>Scroll to next <span aria-hidden="true">↓</span></span></footer>
     <aside id="project-panel" class="panel" role="dialog" aria-modal="false" aria-labelledby="panel-title" inert aria-hidden="true">
-      <button class="panel-close" aria-label="Close project details">×</button>
-      <p class="eyebrow" id="panel-index"></p>
-      <h2 id="panel-title"></h2>
-      <p id="panel-subtitle" class="panel-subtitle"></p>
+      <header class="panel-header">
+        <button class="panel-close" aria-label="Close project details">×</button>
+        <p class="eyebrow" id="panel-index"></p>
+        <h2 id="panel-title"></h2>
+        <p id="panel-subtitle" class="panel-subtitle"></p>
+      </header>
+      <div class="panel-body">
+      <section class="project-media" aria-label="Project media gallery" hidden></section>
       <p id="panel-description"></p>
       <dl><dt>Role</dt><dd id="panel-role"></dd><dt>Tools</dt><dd id="panel-tools"></dd></dl>
       <a id="panel-link" class="project-link">View project <span aria-hidden="true">↗</span></a>
       <p class="coming-soon">Case study coming soon</p>
+      </div>
     </aside>
     <noscript><p class="no-script">Enable JavaScript to explore the interactive portfolio. This first version contains three placeholder game projects.</p></noscript>
     <script type="module" src="/src/main.js"></script>
