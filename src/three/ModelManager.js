@@ -2,6 +2,9 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { assetUrl } from '../data/projects.js';
 
+// Positive Y rotation is counterclockwise when viewed from above.
+export const idleRotationSpeed = THREE.MathUtils.degToRad(2); // Degrees per second: one turn in 3 minutes.
+
 export default class ModelManager {
   constructor(scene, projects) {
     this.scene = scene;
@@ -10,6 +13,7 @@ export default class ModelManager {
     this.loader = new GLTFLoader();
     this.active = null;
     this.hoverScale = 1;
+    this.rotationSpeed = 0;
     projects.forEach((project) => {
       const root = this.normalize(this.placeholder(project), project);
       root.visible = false;
@@ -82,6 +86,7 @@ export default class ModelManager {
         const replacement = this.normalize(gltf.scene, project);
         const previous = this.cache.get(project.id);
         replacement.visible = previous.visible;
+        replacement.children[0].rotation.y = previous.children[0].rotation.y;
         this.scene.add(replacement);
         this.scene.remove(previous);
         this.cache.set(project.id, replacement);
@@ -100,9 +105,12 @@ export default class ModelManager {
     if (!this.active) return;
     this.hoverScale = THREE.MathUtils.damp(this.hoverScale, hovered ? 1.035 : 1, 10, delta);
     const amount = reduced ? 0 : 1;
+    const paused = reduced || inspecting || phase < 1;
+    this.rotationSpeed = paused ? 0 : THREE.MathUtils.damp(this.rotationSpeed, idleRotationSpeed, 2, delta);
+    const content = this.active.children[0];
+    content.rotation.y = (content.rotation.y + this.rotationSpeed * delta) % (Math.PI * 2);
     this.active.position.y = (outgoing ? 1 - phase : phase - 1) * 0.18;
     if (!inspecting) {
-      this.active.children[0].rotation.y = THREE.MathUtils.damp(this.active.children[0].rotation.y, Math.sin(time * 0.35) * 0.055 * amount, 2, delta);
       this.active.position.y += Math.sin(time * 0.8) * 0.025 * amount;
     }
     this.active.scale.setScalar((0.94 + phase * 0.06) * this.hoverScale);

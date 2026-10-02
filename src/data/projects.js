@@ -1,12 +1,13 @@
 // Original sample content. Use paths without a leading slash for GitHub Pages.
 const projects = [
   {
-    id: 'silent-structure', title: 'Silent Structure', subtitle: 'An architectural puzzle',
-    description: 'A place that rearranges itself when you look away. Explore an impossible structure, uncover its rules, and find a way through.',
-    role: 'Game design / Programming', tools: ['Unity', 'C#', 'Blender'],
-    placeholder: 'structure', model: 'models/test_01.glb', page: 'projects/silent-structure.html',
-    year: '01', color: '#c7c5b7', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
+    id: 'silent-structure', title: 'Small', subtitle: 'A co-op horror game',
+    description: 'One day, you wake up to find yourself impossibly SMALL. Your only hope is your best friend, Grey Grey the teddy bear. Together, the two of you must rely on each other to navigate your way through a horrifying maze and find a way out.',
+    role: 'Game design / Programming', tools: ['Unity', 'C#', 'Blender', 'Audacity'],
+    placeholder: 'structure', model: 'models/game_small.glb', page: 'projects/silent-structure.html',
+    year: '2026', color: '#c7c5b7', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
     modelScale: 2,
+    rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
   {
     id: 'small-orbit', title: 'Small Orbit', subtitle: 'An exploration experiment',

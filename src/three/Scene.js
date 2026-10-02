@@ -13,9 +13,10 @@ export const defaultCamera = { azimuth: 0.35, polar: 1.25, distance: 5.4 };
 export default class PortfolioScene {
   constructor(projects, onOpen, onEmpty) {
     this.motion = matchMedia('(prefers-reduced-motion: reduce)');
-    this.scene = new THREE.Scene(); this.scene.background = new THREE.Color('#242625');
+    this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-    this.renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: 'low-power' });
+    this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, powerPreference: 'low-power' });
+    this.renderer.setClearColor(0x000000, 0);
     document.querySelector('#scene').append(this.renderer.domElement);
     this.renderer.domElement.addEventListener('webglcontextlost', (event) => {
       event.preventDefault(); this.renderer.setAnimationLoop(null);
