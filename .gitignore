@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.qa/
+*.local
+
+# Local assistant instructions and workspace state
+AGENTS.md
+AGENTS.override.md
+.agents/
+.codex/
+.chatgpt/
