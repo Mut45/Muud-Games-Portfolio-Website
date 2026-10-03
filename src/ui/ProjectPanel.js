@@ -21,7 +21,7 @@ export default class ProjectPanel {
   }
   open(project) {
     if (!this.isOpen) this.previousFocus = document.activeElement;
-    for (const [key, value] of Object.entries({ title: project.title, subtitle: project.subtitle, description: project.description, role: project.role, tools: project.tools.join(' / '), index: 'Project notes' })) {
+    for (const [key, value] of Object.entries({ title: project.title, subtitle: project.subtitle, description: project.description, role: project.role, tools: project.tools.join(' / '), index: 'Games' })) {
       document.querySelector(`#panel-${key}`).textContent = value;
     }
     document.querySelector('#panel-link').href = assetUrl(project.page);
