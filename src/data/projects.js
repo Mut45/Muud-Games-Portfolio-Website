@@ -36,12 +36,14 @@ const projects = [
     rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
   {
-    id: 'dog-of-war', title: 'Dog of War', subtitle: 'An exploration experiment',
+    id: 'dog-of-war', title: 'Dog of War', subtitle: 'An action sandbox war satire',
     media: placeholderMedia,
     description: 'A small world with its own gravity. Follow unfamiliar signals and discover what remains on the other side of the horizon.',
-    role: 'Game design / Programming', tools: ['Godot', 'Blender'],
-    placeholder: 'orbit', model: null, page: 'projects/dog-of-war.html',
-    year: '02', color: '#a5b3a9', camera: { azimuth: 0.2, polar: 1.35, distance: 5.4 },
+    role: 'Game design / Programming', tools: ['Unity', 'C#', 'Substance Painter', 'Blender'],
+    placeholder: 'orbit', model: 'models/game_dog_of_war.glb', page: 'projects/dog-of-war.html',
+    year: '02', color: '#a5b3a9', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
+    modelScale: 2,
+    rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
   {
     id: 'may-the-best-bower-win', title: 'May the Best Bower Win', subtitle: 'An atmospheric adventure',
