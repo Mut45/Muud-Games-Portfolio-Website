@@ -22,6 +22,22 @@ createSections(entries, (project) => {
   activeProject = project; viewer?.activate(project);
 }, openEntry);
 
+// Sections are created dynamically, so resolve incoming links after they exist.
+const scrollToHash = () => {
+  if (!window.location.hash) return;
+  let id;
+  try {
+    id = decodeURIComponent(window.location.hash.slice(1));
+  } catch {
+    return; // Ignore malformed URL fragments.
+  }
+  const target = document.getElementById(id);
+  if (!target || !document.querySelector('#portfolio').contains(target)) return;
+  target.scrollIntoView({ behavior: 'instant', block: 'start' });
+};
+window.addEventListener('hashchange', scrollToHash);
+scrollToHash();
+
 try {
   const { default: PortfolioScene } = await import('./three/Scene.js');
   viewer = new PortfolioScene(entries, openEntry, () => panel.close());
