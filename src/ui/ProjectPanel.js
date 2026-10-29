@@ -20,6 +20,7 @@ export default class ProjectPanel {
     document.addEventListener('keydown', (event) => { if (event.key === 'Escape') this.close(); });
   }
   open(project) {
+    this.element.dataset.project = project.id;
     if (!this.isOpen) this.previousFocus = document.activeElement;
     for (const [key, value] of Object.entries({ title: project.title, subtitle: project.subtitle, description: project.description, role: project.role, tools: project.tools.join(' / '), index: 'Games' })) {
       document.querySelector(`#panel-${key}`).textContent = value;

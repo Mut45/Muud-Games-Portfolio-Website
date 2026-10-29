@@ -113,6 +113,30 @@ h1 { font-weight: 400; font-size: clamp(27px * $font-scale, 3vw * $font-scale, 4
   &:hover, &:focus-visible { color: #fff; }
   &:focus-visible { outline-offset: 3px; }
 }
+.panel[data-project='small'] {
+  border-top: 2px solid #ffffff;
+  #panel-title { color: #316eb0; }
+  dt { background: #316eb0; }
+  .media-thumbnail[aria-pressed='true'] { border-color: #316eb0; outline-color: #316eb0; }
+}
+.panel[data-project='dog-of-war'] {
+  dt { background: #C6B903; }
+  border-top: 2px solid #AF0800;
+  #panel-title { color: #C6B903; }
+  .media-thumbnail[aria-pressed='true'] { border-color: #C6B903; outline-color: #C6B903; }
+}
+.panel[data-project='may-the-best-bower-win'] {
+  border-top: 2px solid #79070F;
+  #panel-title { color: #BD7800; }
+  dt { background: #BD7800; }
+  .media-thumbnail[aria-pressed='true'] { border-color: #BD7800; outline-color: #BD7800; }
+}
+.panel[data-project='unfamiliar'] {
+  border-top: 2px solid #D7B13E;
+  #panel-title { color: #A04027; }
+  dt { background: #A04027; }
+  .media-thumbnail[aria-pressed='true'] { border-color: #A04027; outline-color: #A04027; }
+}
 .coming-soon { color: $muted; font-size: 10px * $font-scale; margin: 10px 0 0; }
 .no-script { position: fixed; top: 40%; left: 10%; right: 10%; }
 .about-page {

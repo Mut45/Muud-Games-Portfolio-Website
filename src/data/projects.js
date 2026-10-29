@@ -27,7 +27,10 @@ const placeholderMedia = [
 const projects = [
   {
     id: 'small', title: 'Small', subtitle: 'A co-op horror game',
-    media: placeholderMedia,
+    media: [
+      { type: 'youtube', videoId: 'rz8EtRdP3f4', title: 'Small — video' },
+      ...placeholderMedia.slice(1),
+    ],
     description: 'One day, you wake up to find yourself impossibly SMALL. Your only hope is your best friend, Grey Grey the teddy bear. Together, the two of you must rely on each other to navigate your way through a horrifying maze and find a way out.',
     role: 'Game design / Programming', tools: ['Unity', 'C#', 'Blender', 'Audacity'],
     placeholder: 'structure', model: 'models/game_small.glb', page: 'projects/small.html',
@@ -47,11 +50,27 @@ const projects = [
   },
   {
     id: 'may-the-best-bower-win', title: 'May the Best Bower Win', subtitle: 'An atmospheric adventure',
-    media: placeholderMedia,
+    media: [
+      { type: 'youtube', videoId: 'SJfABTCV1qs', title: 'May the Best Bower Win — video' },
+      ...placeholderMedia,
+    ],
     description: 'Somewhere between the stations, a signal is still repeating. Piece together its fragments in a quiet world of forgotten machines.',
     role: 'Game design / Technical art', tools: ['Unity', 'C#', 'Blender'],
     placeholder: 'signal', model: 'models/game_may_the_best_bower_win.glb', page: 'projects/may-the-best-bower-win.html',
     year: '03', color: '#c59a7c', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
+    modelScale: 2,
+    rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
+  },
+  {
+    id: 'unfamiliar', title: 'Unfamiliar', subtitle: 'Game project',
+    media: [
+      { type: 'youtube', videoId: 'vMV_MOVQYiQ', title: 'Unfamiliar — video 1' },
+      { type: 'youtube', videoId: 'BMPB1h1oTc8', title: 'Unfamiliar — video 2' },
+    ],
+    description: 'Project details coming soon.',
+    role: 'Details coming soon', tools: ['Details coming soon'],
+    placeholder: 'structure', model: 'models/game_unfamiliar.glb', page: 'projects/unfamiliar.html',
+    year: '04', color: '#c7c5b7', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
     modelScale: 2,
     rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
