@@ -50,8 +50,10 @@ const projects = [
     media: placeholderMedia,
     description: 'Somewhere between the stations, a signal is still repeating. Piece together its fragments in a quiet world of forgotten machines.',
     role: 'Game design / Technical art', tools: ['Unity', 'C#', 'Blender'],
-    placeholder: 'signal', model: null, page: 'projects/may-the-best-bower-win.html',
-    year: '03', color: '#c59a7c', camera: { azimuth: 0.4, polar: 1.3, distance: 5.4 },
+    placeholder: 'signal', model: 'models/game_may_the_best_bower_win.glb', page: 'projects/may-the-best-bower-win.html',
+    year: '03', color: '#c59a7c', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
+    modelScale: 2,
+    rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
 ];
 
