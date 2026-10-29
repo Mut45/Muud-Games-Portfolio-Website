@@ -40,7 +40,10 @@ const projects = [
   },
   {
     id: 'dog-of-war', title: 'Dog of War', subtitle: 'An action sandbox war satire',
-    media: placeholderMedia,
+    media: [
+      { type: 'youtube', videoId: 'Cpi_q6W4fEg', title: 'Dog of War — video' },
+      ...placeholderMedia.slice(1),
+    ],
     description: 'A small world with its own gravity. Follow unfamiliar signals and discover what remains on the other side of the horizon.',
     role: 'Game design / Programming', tools: ['Unity', 'C#', 'Substance Painter', 'Blender'],
     placeholder: 'orbit', model: 'models/game_dog_of_war.glb', page: 'projects/dog-of-war.html',
