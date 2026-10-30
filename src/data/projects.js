@@ -16,7 +16,7 @@ export const about = {
     { id: 'interest-two', title: 'Road to become the jack of all "100 useless things that you most likely can\'t make a living doing."', 
       description: 'Since college, I have been working on this "challenge" as a hobby to try to learn 100 useless skills. This includes butterfly knife (comb) tricks, whistling, stacking dice , DJing and so on... My most recent project is to get better at guessing the location based on Google Street View (Geo-guessing).', 
       media: [
-        { type: 'video', src: 'videos/about/butterfly.webm', caption: 'Butterfly comb tricks' },
+        { type: 'video', src: 'videos/about/butterfly.webm', caption: 'Butterfly tricks from "Meet the Spy - Team Fortress 2"' },
         { type: 'video', src: 'videos/about/stack_dice.webm', caption: 'Stacking dice' },
         { type: 'video', src: 'videos/about/dj.webm', caption: 'DJing' },
         { type: 'audio', src: 'audio/about/whistle_final.m4a', caption: 'Whistling' },
