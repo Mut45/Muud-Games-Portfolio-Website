@@ -6,10 +6,31 @@ export const about = {
   introduction: 'I am an aspiring game developer/designer who also has experience in technical art and project management.',
   // Separate description paragraphs with \n\n. Images appear in array order.
   // images: [{ src: 'images/about/photo.jpg', alt: 'What the photo shows', caption: 'Description below the photo' }]
+  // For mixed galleries, use media instead of images (existing images arrays still work):
+  // media: [{ type: 'image', src: 'images/about/photo.jpg', alt: 'Photo description', caption: 'Caption' },
+  //   { type: 'audio', src: 'audio/commentary.mp3', poster: 'images/about/cover.jpg', caption: 'Audio caption' },
+  //   { type: 'video', src: 'videos/clip.mp4', poster: 'images/about/cover.jpg', caption: 'Video caption' }]
+  // poster is optional. Media files live in public/; omit public/ from these paths.
   interests: [
     { id: 'interest-one', title: 'Competitive Game Coaching', description: 'I peaked at #97 in Apex Legends during Competitive Season 3 and have ranked within the top 300 across multiple seasons, playing on both keyboard and mouse and controller. I also reached Immortal in Valorant on both the Hong Kong and North American servers. \n\nMore recently, I have been coaching players who want to improve and rank up in competitive shooters. My coaching covers VOD reviews, general strategy, gaming peripheral setups, and healthy posture habits for long gaming sessions.', images: [{ src: 'images/about/coaching_01.png', alt: 'Competitive game coaching', caption: 'Me talking to one of my students about the importance of posture' }, { src: 'images/about/coaching_02.jpg', alt: 'Apex Predator rank in Apex Legends', caption: 'I reached Apex Predator(top #750 in the world) across multiple seasons on both mouse & keyboard and controller' }] },
-    { id: 'interest-two', title: 'Film Analysis & Background Explanation', description: 'Use this section for another part of your life outside game development. A favorite place, creative pursuit, or hobby can go here.', images: [] },
-    { id: 'interest-three', title: 'Storyboarding Beginner', description: 'Add another interest and the story behind it. Include photos and captions to make this section your own.', images: [] },
+    { id: 'interest-two', title: 'Road to become the jack of all "100 useless things that you most likely can\'t make a living doing."', 
+      description: 'Since college, I have been working on this "challenge" as a hobby to try to learn 100 useless skills. This includes butterfly knife (comb) tricks, whistling, stacking dice , DJing and so on... My most recent project is to get better at guessing the location based on Google Street View (Geo-guessing).', 
+      media: [
+        { type: 'video', src: 'videos/about/butterfly.webm', caption: 'Butterfly comb tricks' },
+        { type: 'video', src: 'videos/about/stack_dice.webm', caption: 'Stacking dice' },
+        { type: 'video', src: 'videos/about/dj.webm', caption: 'DJing' },
+        { type: 'audio', src: 'audio/about/whistle_final.m4a', caption: 'Whistling' },
+      ] },
+    { id: 'interest-three', title: 'Beginner Artist', description: `I had absolutely zero experience in art before 2026. But I was hugely inspired by Lucas Pope's story of developing Return of the Obra Dinn, in which he was the artist, programmer, musician, and the designer. This motivated me to incorporate more of my own creative work into my games.
+
+ Earlier this year, I started by creating "programmer art" (some examples can be found in my portfolio). From there, I began learning perspective, sketching, and basic drawing skills, designing capsule art , audio engineering, and pretty much anything I would need as an indie game developer.
+
+I also started learning pixel art, character design, and storyboarding. My primary method of practice was sketching storyboards based on scenes from movies and TV shows that I loved (currently , DTF St. Louis is my favorite show to sketch).`, images: [
+      { src: 'images/about/3_1.png', alt: 'Art practice example 1', caption: 'The capsule art I designed for my game Dog of War' },
+      { src: 'images/about/3_2.png', alt: 'Art practice example 2', caption: 'The character & animation I designed for my pixel platform game Unfamiliar' },
+      { src: 'images/about/3_3.png', alt: 'Art practice example 3', caption: 'A "programmer art" sketch I drew for my portfolio' },
+      { src: 'images/about/3_4.png', alt: 'Art practice example 4', caption: 'I sketched my friend and her cat in the style of Nana' },
+    ] },
   ],
   rotationOffset: [Math.PI / 4, Math.PI / 4, 0],
 };

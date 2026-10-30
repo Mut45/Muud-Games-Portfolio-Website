@@ -17,14 +17,37 @@ about.interests.forEach((interest, index) => {
     copy.append(text);
   }
   const gallery = document.createElement('div'); gallery.className = 'interest-gallery';
-  if (!interest.images?.length) {
+  const items = interest.media ?? interest.images ?? [];
+  if (!items.length) {
     const slot = document.createElement('div'); slot.className = 'photo-placeholder';
     slot.textContent = 'Photo space';
     gallery.append(slot);
   }
   const slides = [];
-  for (const photo of interest.images ?? []) {
+  for (const photo of items) {
     const figure = document.createElement('figure');
+    if (photo.type === 'audio' || photo.type === 'video') {
+      const player = document.createElement(photo.type);
+      player.controls = true; player.preload = 'metadata';
+      player.setAttribute('aria-label', photo.title || photo.caption || `${interest.title} ${photo.type}`);
+      if (photo.type === 'video') {
+        player.playsInline = true;
+        if (photo.poster) player.poster = assetUrl(photo.poster);
+      }
+      const frame = document.createElement('div'); frame.className = 'interest-player-frame';
+      if (photo.type === 'audio' && photo.poster) {
+        const cover = document.createElement('img'); cover.src = assetUrl(photo.poster); cover.alt = '';
+        cover.addEventListener('error', () => cover.remove(), { once: true });
+        frame.append(cover);
+      }
+      player.addEventListener('error', () => {
+        const fallback = document.createElement('div'); fallback.className = 'photo-placeholder';
+        fallback.textContent = `${photo.type === 'audio' ? 'Audio' : 'Video'} unavailable`;
+        frame.replaceChildren(fallback);
+      }, { once: true });
+      player.src = assetUrl(photo.src);
+      frame.append(player); figure.append(frame);
+    } else {
     const image = document.createElement('img'); image.src = assetUrl(photo.src); image.alt = photo.alt ?? '';
     image.loading = 'lazy'; image.decoding = 'async';
     // Match the visible image width inside its 4:3 contain-fit frame.
@@ -40,6 +63,7 @@ about.interests.forEach((interest, index) => {
       fallback.textContent = photo.alt || 'Photo unavailable'; image.replaceWith(fallback);
     }, { once: true });
     figure.append(image);
+    }
     const caption = document.createElement('figcaption');
     caption.textContent = `#${slides.length + 1}${photo.caption ? ` - ${photo.caption}` : ''}`;
     figure.append(caption);
@@ -50,20 +74,26 @@ about.interests.forEach((interest, index) => {
   if (slides.length > 1) {
     gallery.setAttribute('role', 'region');
     gallery.setAttribute('aria-roledescription', 'carousel');
-    gallery.setAttribute('aria-label', `${interest.title} photos`);
+    const imageOnly = items.every((item) => !item.type || item.type === 'image');
+    const itemLabel = imageOnly ? 'photo' : 'media item';
+    gallery.setAttribute('aria-label', `${interest.title} gallery`);
     const controls = document.createElement('div'); controls.className = 'interest-gallery-controls';
-    const previous = document.createElement('button'); previous.type = 'button'; previous.textContent = '←'; previous.setAttribute('aria-label', 'Previous photo');
-    const next = document.createElement('button'); next.type = 'button'; next.textContent = '→'; next.setAttribute('aria-label', 'Next photo');
+    const previous = document.createElement('button'); previous.type = 'button'; previous.textContent = '←'; previous.setAttribute('aria-label', `Previous ${itemLabel}`);
+    const next = document.createElement('button'); next.type = 'button'; next.textContent = '→'; next.setAttribute('aria-label', `Next ${itemLabel}`);
     const status = document.createElement('span'); status.setAttribute('role', 'status'); status.setAttribute('aria-atomic', 'true');
     let current = 0;
     const show = (index) => {
       current = (index + slides.length) % slides.length;
-      slides.forEach((slide, i) => { slide.hidden = i !== current; });
-      status.textContent = `Photo ${current + 1} / ${slides.length}`;
+      slides.forEach((slide, i) => {
+        slide.hidden = i !== current;
+        if (slide.hidden) slide.querySelectorAll('audio, video').forEach((player) => player.pause());
+      });
+      status.textContent = `${current + 1}/${slides.length}`;
     };
     previous.addEventListener('click', () => show(current - 1));
     next.addEventListener('click', () => show(current + 1));
     gallery.addEventListener('keydown', (event) => {
+      if (event.target.closest('audio, video')) return;
       if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
       event.preventDefault();
       show(current + (event.key === 'ArrowRight' ? 1 : -1));
