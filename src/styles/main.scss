@@ -130,6 +130,10 @@ h1 { font-weight: 400; font-size: clamp(27px * $font-scale, 3vw * $font-scale, 4
 .media-poster-label { position: absolute; padding: 12px 16px; font-size: 14px * $font-scale; background: #191b1a; border: 1px solid #80867b; }
 .media-unavailable { padding: 12px; color: $muted; font-size: 12px * $font-scale; text-align: center; }
 .panel-close { position: absolute; top: 5px; right: 8px; width: 44px; height: 44px; border: 0; background: none; font-size: 26px * $font-scale; font-weight: 300; }
+#back-to-top {
+  pointer-events: auto; min-height: 44px; padding: 8px 0; border: 0; background: none; letter-spacing: inherit;
+  &:hover { color: $paper; }
+}
 .project-link {
   display: inline-flex; max-width: 100%; align-items: center; gap: 8px;
   font-size: 13px * $font-scale; line-height: 1.6;

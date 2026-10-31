@@ -6,6 +6,14 @@ import ProjectPanel from './ui/ProjectPanel.js';
 let viewer;
 const entries = [about, ...projects];
 let activeProject = entries[0];
+const scrollHint = document.querySelector('#scroll-hint');
+const backToTop = document.querySelector('#back-to-top');
+backToTop.addEventListener('click', () => {
+  panel.close();
+  document.querySelector('.wordmark').focus({ preventScroll: true });
+  history.replaceState(history.state, '', `${location.pathname}${location.search}`);
+  window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+});
 const panel = new ProjectPanel((open) => {
   document.body.classList.toggle('panel-open', open);
   if (viewer) viewer.panelOpen = open;
@@ -18,6 +26,9 @@ const openEntry = (entry) => {
   else panel.open(entry);
 };
 createSections(entries, (project) => {
+  const isLast = project.id === entries[entries.length - 1].id;
+  scrollHint.hidden = isLast;
+  backToTop.hidden = !isLast;
   if (activeProject.id !== project.id) panel.close();
   activeProject = project; viewer?.activate(project);
 }, openEntry);
