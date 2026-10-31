@@ -84,8 +84,8 @@ export default class Interaction {
         let y = Math.max(minY, Math.min(this.modelBounds.top - rect.top - height - 12, maxY));
         // The portrait's bounds include empty space; tuck its hint closer in.
         if (displayed.classList.contains('about-section')) {
-          x = Math.min(x + Math.min(innerWidth * 0.05, 72), rect.width - margin - width);
-          y = Math.min(y + Math.min(innerHeight * 0.06, 54), maxY);
+          x = Math.min(x + Math.min(innerWidth * 0.08, 110), rect.width - margin - width);
+          y = Math.min(y + Math.min(innerHeight * 0.2, 110), maxY);
         }
         hint.style.left = `${x}px`;
         hint.style.top = `${y}px`;
