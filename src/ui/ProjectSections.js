@@ -31,7 +31,6 @@ export default function createSections(projects, onActivate, onOpen) {
     section.append(hint);
     main.append(section); return section;
   });
-  document.querySelector('.nav-count').textContent = `/ ${String(games.length).padStart(2, '0')}`;
   // The central strip identifies the section containing the viewport midpoint.
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => { if (entry.isIntersecting) onActivate(projects[sections.indexOf(entry.target)]); });
