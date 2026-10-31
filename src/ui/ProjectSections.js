@@ -1,3 +1,5 @@
+import { assetUrl } from '../data/projects.js';
+
 export default function createSections(projects, onActivate, onOpen) {
   const main = document.querySelector('#portfolio');
   const games = projects.filter((project) => project.kind !== 'about');
@@ -12,13 +14,21 @@ export default function createSections(projects, onActivate, onOpen) {
       section.append(anchor);
     }
     section.setAttribute('aria-labelledby', `title-${project.id}`);
-    section.insertAdjacentHTML('beforeend', `<div class="section-label"><span>${isAbout ? 'Muud Games' : 'Selected work'}</span><span>${isAbout ? '' : `${String(gameIndex + 1).padStart(2, '0')} / ${String(games.length).padStart(2, '0')}`}</span></div><div class="project-caption"><p class="eyebrow"></p><h1 id="title-${project.id}">${isAbout ? '<a></a>' : '<button type="button" aria-haspopup="dialog"></button>'}</h1><p class="project-subtitle"></p></div>`);
+    section.insertAdjacentHTML('beforeend', `<div class="section-label"><span>${isAbout ? 'Muud Games' : ''}</span><span>${isAbout ? '' : `${String(gameIndex + 1).padStart(2, '0')} / ${String(games.length).padStart(2, '0')}`}</span></div><div class="project-caption"><p class="eyebrow"></p><h1 id="title-${project.id}">${isAbout ? '<a></a>' : '<button type="button" aria-haspopup="dialog"></button>'}</h1><p class="project-subtitle"></p></div>`);
     section.querySelector('.eyebrow').textContent = isAbout ? 'Introduction' : `Game ${String(gameIndex + 1).padStart(2, '0')}`;
     const trigger = section.querySelector('h1 a, h1 button');
     trigger.textContent = project.title;
     if (isAbout) trigger.href = project.page;
     else trigger.addEventListener('click', () => onOpen(project));
     section.querySelector('.project-subtitle').textContent = project.subtitle;
+    const hint = document.createElement('div');
+    hint.className = 'model-hover-hint'; hint.setAttribute('aria-hidden', 'true');
+    const label = document.createElement('span');
+    label.className = 'hint-label'; label.textContent = 'Click To Open';
+    const arrow = document.createElement('img');
+    arrow.src = assetUrl('images/games/arrow.png'); arrow.alt = ''; arrow.draggable = false;
+    arrow.className = 'hint-arrow'; hint.append(label, arrow);
+    section.append(hint);
     main.append(section); return section;
   });
   document.querySelector('.nav-count').textContent = `/ ${String(games.length).padStart(2, '0')}`;

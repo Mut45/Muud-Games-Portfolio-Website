@@ -47,6 +47,32 @@ button:focus-visible, a:focus-visible { outline: 1px solid $paper; outline-offse
 #interaction { position: fixed; z-index: 2; touch-action: none; }
 main { position: relative; z-index: 1; pointer-events: none; }
 .project-section { height: 100svh; min-height: 580px; position: relative; }
+.model-hover-hint {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: clamp(180px, 20vw, 280px);
+  max-width: calc(100vw - 32px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+  > * {
+    display: block;
+    min-width: 0;
+    height: auto;
+    clip-path: inset(0 100% 0 0);
+    transition: none;
+  }
+  .hint-label { flex: 1; color: #fff; font-size: clamp(12px, 1.4vw, 20px); white-space: nowrap; }
+  .hint-arrow { width: 30%; flex-shrink: 0; filter: brightness(0) invert(1); transform: scaleY(-1); }
+}
+@media (hover: hover) and (pointer: fine), (hover: none) and (pointer: coarse) {
+  body:not(.panel-open) .is-model-hovered .model-hover-hint > * {
+    clip-path: inset(0);
+    transition: clip-path .3s cubic-bezier(.16, 1, .3, 1);
+  }
+}
 .section-anchor { position: absolute; top: 0; }
 .project-caption h1 a { display: inline-block; padding: 4px 0; pointer-events: auto; }
 .about-section {
@@ -164,7 +190,7 @@ h1 { font-weight: 400; font-size: clamp(27px * $font-scale, 3vw * $font-scale, 4
 .interest-gallery { min-width: 0; width: 100%; max-width: 600px; display: grid; gap: 16px; margin: 0 auto 28px;
   figure { margin: 0; }
   img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: transparent; }
-  figcaption { max-width: 440px; width: var(--photo-width, 100%); overflow-wrap: anywhere; text-align: center; font-size: 10px * $font-scale; color: $muted; margin: 10px auto 0; line-height: 1.5; }
+  figcaption { min-height: var(--caption-height, 0px); max-width: 440px; width: var(--photo-width, 100%); overflow-wrap: anywhere; text-align: center; font-size: 10px * $font-scale; color: $muted; margin: 10px auto 0; line-height: 1.5; }
 }
 .interest-gallery-controls {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;

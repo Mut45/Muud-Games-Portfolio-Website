@@ -24,6 +24,28 @@ about.interests.forEach((interest, index) => {
     gallery.append(slot);
   }
   const slides = [];
+  let captionFrame;
+  const reserveCaptionSpace = () => {
+    cancelAnimationFrame(captionFrame);
+    captionFrame = requestAnimationFrame(() => {
+      const width = gallery.getBoundingClientRect().width;
+      if (!width) return;
+      let tallest = 0;
+      for (const slide of slides) {
+        // Measure only a caption copy, without exposing hidden slides or players.
+        const probe = document.createElement('figure');
+        probe.style.cssText = `position:absolute;visibility:hidden;pointer-events:none;width:${width}px;`;
+        probe.style.setProperty('--photo-width', slide.style.getPropertyValue('--photo-width') || '100%');
+        probe.setAttribute('aria-hidden', 'true');
+        const caption = slide.querySelector('figcaption').cloneNode(true);
+        caption.style.minHeight = '0';
+        probe.append(caption); gallery.append(probe);
+        tallest = Math.max(tallest, caption.getBoundingClientRect().height);
+        probe.remove();
+      }
+      gallery.style.setProperty('--caption-height', `${Math.ceil(tallest)}px`);
+    });
+  };
   for (const photo of items) {
     const figure = document.createElement('figure');
     if (photo.type === 'audio' || photo.type === 'video') {
@@ -49,12 +71,13 @@ about.interests.forEach((interest, index) => {
       frame.append(player); figure.append(frame);
     } else {
     const image = document.createElement('img'); image.src = assetUrl(photo.src); image.alt = photo.alt ?? '';
-    image.loading = 'lazy'; image.decoding = 'async';
+    image.loading = 'eager'; image.decoding = 'async';
     // Match the visible image width inside its 4:3 contain-fit frame.
     const sizeCaption = () => {
       if (!image.naturalHeight) return;
       const fraction = Math.min(1, (image.naturalWidth / image.naturalHeight) / (4 / 3));
       figure.style.setProperty('--photo-width', `${fraction * 100}%`);
+      reserveCaptionSpace();
     };
     image.addEventListener('load', sizeCaption);
     if (image.complete) sizeCaption();
@@ -102,4 +125,14 @@ about.interests.forEach((interest, index) => {
   }
   title.after(gallery);
   section.append(copy); container.append(section);
+  if (slides.length > 1) {
+    let previousWidth = 0;
+    new ResizeObserver(([entry]) => {
+      if (entry.contentRect.width === previousWidth) return;
+      previousWidth = entry.contentRect.width;
+      reserveCaptionSpace();
+    }).observe(gallery);
+    document.fonts.ready.then(reserveCaptionSpace);
+    reserveCaptionSpace();
+  }
 });

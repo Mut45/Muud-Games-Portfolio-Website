@@ -109,7 +109,7 @@ export default class ModelManager {
   }
   update(time, delta, { reduced, inspecting, hovered, phase = 1, outgoing = false }) {
     if (!this.active) return;
-    this.hoverScale = THREE.MathUtils.damp(this.hoverScale, hovered ? 1.035 : 1, 10, delta);
+    this.hoverScale = THREE.MathUtils.damp(this.hoverScale, hovered ? 1.2 : 1, 10, delta);
     const amount = reduced ? 0 : 1;
     const paused = reduced || inspecting || phase < 1;
     this.rotationSpeed = paused ? 0 : THREE.MathUtils.damp(this.rotationSpeed, idleRotationSpeed, 2, delta);

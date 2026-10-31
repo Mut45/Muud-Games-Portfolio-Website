@@ -101,6 +101,7 @@ export default class PortfolioScene {
     this.models.update(now / 1000, delta, { reduced: this.motion.matches, inspecting: this.interaction.inspecting, hovered: this.interaction.hovered, phase, outgoing });
     this.scene.updateMatrixWorld(true); this.camera.updateMatrixWorld(true);
     this.interaction.updateBounds();
+    this.interaction.updateHint();
     this.post.render();
   }
 }
