@@ -111,7 +111,7 @@ conversions, source deletions, skipped WebPs and collisions separately.
 
 **Conversion deletes only newly converted source MP4s after successful validation.** Keep archival
 originals outside `public/` if you need them. The script recursively converts the
-first three seconds, at up to 640px wide, 12 fps and quality 65, preserving aspect
+first five seconds, at up to 640px wide, 12 fps and quality 65, preserving aspect
 ratio and looping. It checks the RIFF container and decodes every animation frame
 before deleting the original. Single-frame or invalid outputs retain the source
 and report failure. There is no MP4 fallback on the page.
@@ -159,3 +159,4 @@ the navigation. Matching uses the homepage project's ID with hyphens converted
 to underscores. Set `portfolioSlug` on a project in `src/data/projects.js` if its
 asset folder uses a different name. Projects without a portfolio entry retain
 their existing link until matching media is added and the manifest is refreshed.
+

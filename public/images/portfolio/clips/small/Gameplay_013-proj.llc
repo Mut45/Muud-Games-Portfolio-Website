@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: 'Gameplay_013.mp4',
+  cutSegments: [
+    {
+      start: 100.98928064147627,
+      end: 107.407291,
+      name: '',
+      selected: true,
+    },
+  ],
+}

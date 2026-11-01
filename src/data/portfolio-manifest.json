@@ -37,8 +37,54 @@
     }
   },
   {
+    "slug": "may_the_best_bower_win",
+    "clips": [
+      {
+        "src": "images/portfolio/clips/may_the_best_bower_win/catch_1/catch_1-1.webp",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "src": "images/portfolio/clips/may_the_best_bower_win/extraction/extraction-1.webp",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "src": "images/portfolio/clips/may_the_best_bower_win/gameplay_01/gameplay_01-1.webp",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "src": "images/portfolio/clips/may_the_best_bower_win/loot_1/loot_1-1.webp",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "src": "images/portfolio/clips/may_the_best_bower_win/shop_1/shop_1-1.webp",
+        "width": 640,
+        "height": 360
+      }
+    ],
+    "pages": [],
+    "keyVisual": {
+      "src": "images/portfolio/key_visual/may_the_best_bower_win/kv_1.webp",
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  {
     "slug": "small",
     "clips": [
+      {
+        "src": "images/portfolio/clips/small/horror_01.webp",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "src": "images/portfolio/clips/small/intro_01.webp",
+        "width": 640,
+        "height": 360
+      },
       {
         "src": "images/portfolio/clips/small/math_01.webp",
         "width": 640,
@@ -66,6 +112,16 @@
       "src": "images/portfolio/key_visual/small/small_kv.webp",
       "width": 1920,
       "height": 1080
+    }
+  },
+  {
+    "slug": "unfamiliar",
+    "clips": [],
+    "pages": [],
+    "keyVisual": {
+      "src": "images/portfolio/key_visual/unfamiliar/kv_1.webp",
+      "width": 1920,
+      "height": 1078
     }
   }
 ]

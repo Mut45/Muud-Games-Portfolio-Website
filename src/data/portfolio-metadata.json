@@ -1,4 +1,17 @@
 {
+  "small": {
+    "title": "Small",
+    "description": "",
+    "accentColor": "#1257A4",
+    "tags": [
+      "Horror",
+      "Asymmetrical Co-op",
+      "Atomspheric",
+      "Pscychological",
+      "Survival Horror"
+    ],
+    "dateMade": "2026"
+  },
   "dog_of_war": {
     "description": "",
     "keyVisualPosition": "center 18%",
@@ -13,17 +26,27 @@
     ],
     "dateMade": "2026"
   },
-  "small": {
-    "title": "Small",
+  "may_the_best_bower_win": {
+    "title": "May The Best Bower Win",
     "description": "",
-    "accentColor": "#1257A4",
     "tags": [
-      "Horror",
-      "Asymmetrical Co-op",
-      "Atomspheric",
-      "Pscychological",
-      "Survival Horror"
+      "Oneline 1v1",
+      "Prop Hunt",
+      "Party",
+      "Rougelite",
+      "Extraction"
     ],
     "dateMade": "2026"
+  },
+  "unfamiliar": {
+    "title": "Unfamiliar",
+    "description": "Add a short project introduction.",
+    "tags": [
+      "2D Platform",
+      "Puzzle",
+      "Meta",
+      "Lighthearted"
+    ],
+    "dateMade": "2025"
   }
 }

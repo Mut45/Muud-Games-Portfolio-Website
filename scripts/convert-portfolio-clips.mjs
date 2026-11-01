@@ -67,7 +67,7 @@ async function convertMedia({ directory, kind, ffmpeg = process.env.FFMPEG_PATH 
         if (size > 300 * 1024) console.warn(`Key visual above ${size > 500 * 1024 ? '500 KB soft maximum' : '300 KB preferred budget'}: ${source} (${Math.round(size / 1024)} KB); retaining artwork quality.`);
       } else {
       for (const [width, fps, quality] of [[640, 12, 65], [560, 10, 60], [480, 10, 55]]) {
-        run(['-y', '-i', source, '-t', '3', '-an', '-vf', `fps=${fps},scale=w='min(${width},iw)':h=-2`, '-c:v', 'libwebp_anim', '-quality', String(quality), '-compression_level', '6', '-loop', '0', temporary]);
+        run(['-y', '-i', source, '-t', '5', '-an', '-vf', `fps=${fps},scale=w='min(${width},iw)':h=-2`, '-c:v', 'libwebp_anim', '-quality', String(quality), '-compression_level', '6', '-loop', '0', temporary]);
         size = await validate(temporary);
         if (size <= 1.5 * 1024 * 1024) break;
       }

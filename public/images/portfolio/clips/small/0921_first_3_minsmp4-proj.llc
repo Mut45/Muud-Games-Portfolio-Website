@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: '0921_first_3_minsmp4.mp4',
+  cutSegments: [
+    {
+      start: 96.78313473989455,
+      end: 114.7309543427065,
+      name: '',
+      selected: true,
+    },
+  ],
+}

@@ -1,10 +1,17 @@
 import './styles/main.scss';
 import './styles/portfolio.scss';
 import manifest from './data/portfolio-manifest.json';
-import { assetUrl, portfolioDetails } from './data/projects.js';
+import { assetUrl, portfolioDetails, portfolioMetadata } from './data/projects.js';
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const list = document.querySelector('#portfolio-projects');
+// Metadata key order controls presentation; unconfigured projects follow afterward.
+const projectOrder = Object.keys(portfolioMetadata);
+const orderIndex = slug => {
+  const index = projectOrder.indexOf(slug);
+  return index === -1 ? projectOrder.length : index;
+};
+const orderedProjects = [...manifest].sort((a, b) => orderIndex(a.slug) - orderIndex(b.slug));
 function element(tag, className, text) {
   const node = document.createElement(tag);
   node.className = className;
@@ -122,7 +129,7 @@ function gallery(clips, title, parent) {
 let active;
 const buttons = [];
 const projectTargets = new Map();
-for (const [position, project] of manifest.entries()) {
+for (const [position, project] of orderedProjects.entries()) {
   const { title, description, tags = [], dateMade = '', keyVisual, keyVisualPosition = 'center', keyVisualMobilePosition = keyVisualPosition, accentColor } = portfolioDetails(project.slug);
   const article = element('article', 'portfolio-project');
   article.id = project.slug;

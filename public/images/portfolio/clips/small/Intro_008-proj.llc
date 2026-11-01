@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: 'Intro_008.mp4',
+  cutSegments: [
+    {
+      start: 107.51851866666667,
+      end: 112.05357042062097,
+      name: '',
+      selected: true,
+    },
+  ],
+}
