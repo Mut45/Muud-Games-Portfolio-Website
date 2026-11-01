@@ -32,10 +32,10 @@
     "description": "",
     "tags": [
       "Online 1v1",
-      "Prop Hunt",
+      "Hide and Seek",
       "Party",
-      "Rougelite",
-      "Extraction"
+      "Rouge-like",
+      "Extraction Looter"
     ],
     "dateMade": "2026"
   },
@@ -46,7 +46,8 @@
       "2D Platform",
       "Puzzle",
       "Meta",
-      "Lighthearted"
+      "Lighthearted",
+      "Parody"
     ],
     "dateMade": "2025"
   }
