@@ -1,0 +1,86 @@
+{
+  "dog_of_war": [
+    {
+      "src": "images/games/dog_of_war/0930_mountain_top.webp",
+      "width": 1281,
+      "height": 718
+    },
+    {
+      "src": "images/games/dog_of_war/dow-00010.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/dog_of_war/dow-00036.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/dog_of_war/dow-00037.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/dog_of_war/dow-00040.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/dog_of_war/poi_01.webp",
+      "width": 1920,
+      "height": 1074
+    },
+    {
+      "src": "images/games/dog_of_war/small-00097.webp",
+      "width": 1302,
+      "height": 734
+    }
+  ],
+  "may_the_best_bower_win": [
+    {
+      "src": "images/games/may_the_best_bower_win/1004_shop_001.webp",
+      "width": 1551,
+      "height": 871
+    },
+    {
+      "src": "images/games/may_the_best_bower_win/mtbb-00002.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/may_the_best_bower_win/mtbb-00004.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/may_the_best_bower_win/mtbb-00005.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/may_the_best_bower_win/mtbb-00011.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/may_the_best_bower_win/mtbb-00020.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/may_the_best_bower_win/mtbb-00022.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/may_the_best_bower_win/mtbb-00027.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/may_the_best_bower_win/mtbb-00028.webp",
+      "width": 1920,
+      "height": 1080
+    }
+  ]
+}

@@ -15,10 +15,13 @@ export function convertKeyVisuals(options = {}) {
 export function convertPortfolioPages(options = {}) {
   return convertMedia({ directory: path.join(root, 'public/images/portfolio/page_content'), ...options, kind: 'page' });
 }
+export function convertGameImages(options = {}) {
+  return convertMedia({ directory: path.join(root, 'public/images/games'), ...options, kind: 'gameImage' });
+}
 async function convertMedia({ directory, kind, ffmpeg = process.env.FFMPEG_PATH || 'ffmpeg' }) {
   const isStill = kind !== 'clip';
   const sourceExtension = isStill ? /\.png$/i : /\.mp4$/i;
-  const discovered = await files(directory);
+  const discovered = (await files(directory)).filter(file => kind !== 'gameImage' || path.relative(directory, file).split(path.sep).length > 1);
   const existingWebps = discovered.filter(file => /\.webp$/i.test(file));
   // Case-insensitive matching also protects assets moved between Windows and Linux.
   const outputs = new Set(existingWebps.map(file => file.toLowerCase()));
@@ -52,7 +55,11 @@ async function convertMedia({ directory, kind, ffmpeg = process.env.FFMPEG_PATH 
       temporaryDirectory = await mkdtemp(path.join(tmpdir(), 'portfolio-conversion-'));
       temporary = path.join(temporaryDirectory, 'clip.webp');
       let size;
-      if (kind === 'page') {
+      if (kind === 'gameImage') {
+        run(['-y', '-i', source, '-frames:v', '1', '-vf', "scale=w='min(1920,iw)':h='min(16000,ih)':force_original_aspect_ratio=decrease", '-c:v', 'libwebp', '-quality', '85', '-compression_level', '6', temporary]);
+        size = await validate(temporary);
+        if (size > 1024 * 1024) console.warn(`Game screenshot above 1 MB: ${source}; retaining image quality.`);
+      } else if (kind === 'page') {
         // 2x the 1600px content column keeps small text readable on high-DPI
         // displays. Limit very tall pages to WebP's dimension range as well.
         run(['-y', '-i', source, '-frames:v', '1', '-vf', "scale=w='min(3200,iw)':h='min(16000,ih)':force_original_aspect_ratio=decrease", '-c:v', 'libwebp', '-quality', '90', '-compression_level', '6', temporary]);

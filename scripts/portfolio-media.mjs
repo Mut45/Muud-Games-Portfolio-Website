@@ -67,8 +67,35 @@ export async function generateManifest(projectRoot = root) {
     await mkdir(path.dirname(manifestPath), { recursive: true });
     await writeFile(manifestPath, content);
   }
+  const gameMedia = await generateGameMediaManifest(projectRoot);
   console.log(`Portfolio manifest: ${projects.size} projects (${updated ? 'updated' : 'unchanged'})`);
-  return { updated, newPages, existingPages };
+  return { updated, newPages, existingPages, gameMedia };
+}
+export async function generateGameMediaManifest(projectRoot = root) {
+  const directory = path.join(projectRoot, 'public/images/games');
+  const projects = new Map();
+  let count = 0;
+  for (const file of (await files(directory)).sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))) {
+    if (!/\.webp$/i.test(file)) continue;
+    const relative = path.relative(directory, file).split(path.sep);
+    if (relative.length < 2) continue; // Shared UI images are not game screenshots.
+    const slug = relative[0];
+    if (!projects.has(slug)) projects.set(slug, []);
+    const { width, height } = webpInfo(await readFile(file));
+    projects.get(slug).push({ src: path.relative(path.join(projectRoot, 'public'), file).split(path.sep).join('/'), width, height });
+    count++;
+  }
+  const manifestPath = path.join(projectRoot, 'src/data/game-media-manifest.json');
+  const content = JSON.stringify(Object.fromEntries(projects), null, 2) + '\n';
+  const previous = await readFile(manifestPath, 'utf8').catch(error => {
+    if (error.code === 'ENOENT') return '';
+    throw error;
+  });
+  if (content !== previous) {
+    await mkdir(path.dirname(manifestPath), { recursive: true });
+    await writeFile(manifestPath, content);
+  }
+  return { updated: content !== previous, count };
 }
 export async function ensurePortfolioMetadata(projectRoot = root) {
   const dataDirectory = path.join(projectRoot, 'src/data');

@@ -1,4 +1,5 @@
 import portfolioMetadata from './portfolio-metadata.json';
+import gameMedia from './game-media-manifest.json';
 
 // Original sample content. Use paths without a leading slash for GitHub Pages.
 export const about = {
@@ -101,6 +102,17 @@ const projects = [
     rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
 ];
+
+// Keep authored videos and media, replacing sample images when real screenshots exist.
+for (const project of projects) {
+  const screenshots = gameMedia[project.portfolioSlug ?? project.id.replaceAll('-', '_')] ?? [];
+  if (!screenshots.length) continue;
+  const media = (project.media ?? []).filter(item => !item.src?.startsWith('images/placeholders/'));
+  const existingSources = new Set(media.map(item => item.src));
+  project.media = [...media, ...screenshots.filter(image => !existingSources.has(image.src)).map((image, index) => ({
+    type: 'image', ...image, alt: `${project.title} — screenshot ${index + 1}`,
+  }))];
+}
 
 // Nested HTML pages declare their relative site root so public media resolves
 // from the portfolio root, including when hosted under a GitHub Pages repository.

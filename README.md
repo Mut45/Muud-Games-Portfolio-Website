@@ -15,6 +15,23 @@ added to the HTML entries in `vite.config.js`.
 
 ## Portfolio
 
+### Homepage panel screenshots
+
+Add PNG screenshots under `public/images/games/{project_slug}/`, then run
+`npm run portfolio:update`. New PNGs convert to static WebPs at quality 85, up
+to 1920px wide, preserving aspect ratio without enlarging smaller images.
+Each output must decode successfully before its source PNG is deleted. Existing
+WebPs are never overwritten; collisions retain both files. Shared UI PNGs directly
+in `images/games/` (such as `arrow.png`) are excluded.
+
+`src/data/game-media-manifest.json` discovers screenshots in natural filename
+order. `src/data/projects.js` adds them to the matching homepage panel after
+authored media, keeps existing videos, removes sample images when real screenshots
+are available, and avoids duplicate paths. Slugs match project IDs with hyphens
+replaced by underscores, or the optional `portfolioSlug` override. No UI edits
+are needed for subsequent screenshots. Builds refresh discovery but never convert
+or delete images; unchanged manifests are not rewritten.
+
 The gallery lives at `portfolio/` (`/portfolio/` locally, or
 `/repository/portfolio/` on GitHub Pages). This is a real HTML entry, so direct
 visits and refreshes work without a client router or a custom 404 fallback.

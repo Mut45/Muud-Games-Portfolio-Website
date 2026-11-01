@@ -1,13 +1,14 @@
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { root, generateManifest, ensurePortfolioMetadata } from './portfolio-media.mjs';
-import { convertClips, convertKeyVisuals, convertPortfolioPages } from './convert-portfolio-clips.mjs';
+import { convertClips, convertKeyVisuals, convertPortfolioPages, convertGameImages } from './convert-portfolio-clips.mjs';
 
 export async function updatePortfolio({ projectRoot = root, ffmpeg } = {}) {
   const summary = await convertClips({ directory: path.join(projectRoot, 'public/images/portfolio/clips'), ffmpeg });
   const keyVisuals = await convertKeyVisuals({ directory: path.join(projectRoot, 'public/images/portfolio/key_visual'), ffmpeg });
   const pages = await convertPortfolioPages({ directory: path.join(projectRoot, 'public/images/portfolio/page_content'), ffmpeg });
-  summary.failed += keyVisuals.failed + pages.failed;
+  const gameImages = await convertGameImages({ directory: path.join(projectRoot, 'public/images/games'), ffmpeg });
+  summary.failed += keyVisuals.failed + pages.failed + gameImages.failed;
   let manifest = { updated: false, newPages: 0, existingPages: 0 };
   let metadata = { added: [] };
   try {
@@ -31,13 +32,19 @@ Page PNGs converted:        ${pages.converted}
 Original page PNGs deleted: ${pages.deleted}
 Existing page WebPs skipped: ${pages.skipped}
 Page filename collisions:  ${pages.collisions}
+Game screenshot PNGs:       ${gameImages.detected}
+Game screenshots converted: ${gameImages.converted}
+Game PNGs deleted:          ${gameImages.deleted}
+Existing game WebPs skipped: ${gameImages.skipped}
+Game screenshot collisions: ${gameImages.collisions}
+Game gallery manifest updated: ${manifest.gameMedia?.updated ? 'Yes' : 'No'}
 New portfolio pages found:  ${manifest.newPages}
 Existing pages preserved:   ${manifest.existingPages}
 Manifest updated:           ${manifest.updated ? 'Yes' : 'No'}
 Text placeholders added:    ${metadata.added.length}
 Errors:                     ${summary.failed}`);
   if (metadata.added.length) console.log(`Edit text for ${metadata.added.join(', ')} in ${metadata.path}`);
-  return { ...summary, keyVisuals, pages, manifest, metadata };
+  return { ...summary, keyVisuals, pages, gameImages, manifest, metadata };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

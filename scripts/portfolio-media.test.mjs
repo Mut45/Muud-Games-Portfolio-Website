@@ -7,7 +7,7 @@ import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { root, files, generateManifest, webpInfo } from './portfolio-media.mjs';
 import { updatePortfolio } from './update-portfolio.mjs';
-import { convertClips, convertKeyVisuals, convertPortfolioPages } from './convert-portfolio-clips.mjs';
+import { convertClips, convertKeyVisuals, convertPortfolioPages, convertGameImages } from './convert-portfolio-clips.mjs';
 
 async function fixture(t) {
   const directory = await mkdtemp(path.join(tmpdir(), 'portfolio-test-'));
@@ -92,6 +92,38 @@ test('new project text is editable and future updates preserve authored metadata
 });
 
 const ffmpeg = process.env.FFMPEG_PATH || 'ffmpeg';
+test('game screenshots are converted and discovered by slug while shared UI and existing media are preserved', { skip: spawnSync(ffmpeg, ['-version']).status !== 0 && 'Set FFMPEG_PATH for screenshot conversion verification' }, async t => {
+  const f = await fixture(t);
+  const games = path.join(f.directory, 'public/images/games');
+  const screenshots = path.join(games, 'dog_of_war'); await mkdir(screenshots, { recursive: true });
+  const png = path.join(screenshots, 'shot_2.png');
+  assert.equal(spawnSync(ffmpeg, ['-v', 'error', '-y', '-f', 'lavfi', '-i', 'testsrc2=size=2560x1440', '-frames:v', '1', png]).status, 0);
+  const original = await readFile(png);
+  await writeFile(path.join(games, 'arrow.png'), original);
+  await copyFile(png, path.join(screenshots, 'shot_10.png'));
+  const result = await updatePortfolio({ projectRoot: f.directory, ffmpeg });
+  assert.equal(result.gameImages.converted, 2); assert.equal(result.gameImages.deleted, 2); assert.equal(result.failed, 0);
+  assert.equal(await stat(png).catch(() => null), null);
+  assert.deepEqual(await readFile(path.join(games, 'arrow.png')), original);
+  const info = webpInfo(await readFile(path.join(screenshots, 'shot_2.webp')));
+  assert.equal(info.width, 1920); assert.equal(info.height, 1080);
+  const manifestPath = path.join(f.directory, 'src/data/game-media-manifest.json');
+  const manifest = JSON.parse(await readFile(manifestPath));
+  assert.deepEqual(Object.keys(manifest), ['dog_of_war']);
+  assert.deepEqual(manifest.dog_of_war.map(image => path.basename(image.src)), ['shot_2.webp', 'shot_10.webp']);
+  const beforeRepeat = await snapshot(f.directory);
+  await updatePortfolio({ projectRoot: f.directory, ffmpeg: 'must-not-be-executed' });
+  assert.deepEqual(await snapshot(f.directory), beforeRepeat);
+  await writeFile(png, original);
+  const beforeCollision = await snapshot(f.directory);
+  const collision = await convertGameImages({ directory: games, ffmpeg: 'must-not-be-executed' });
+  assert.equal(collision.collisions, 1); assert.equal(collision.deleted, 0);
+  assert.deepEqual(await snapshot(f.directory), beforeCollision);
+  await writeFile(path.join(screenshots, 'broken.png'), 'broken PNG');
+  const failed = await convertGameImages({ directory: games, ffmpeg });
+  assert.equal(failed.failed, 1); assert.equal(failed.deleted, 0);
+  assert.equal(await readFile(path.join(screenshots, 'broken.png'), 'utf8'), 'broken PNG');
+});
 test('page PNG conversion resizes proportionally, validates before deletion and preserves existing media', { skip: spawnSync(ffmpeg, ['-version']).status !== 0 && 'Set FFMPEG_PATH for page conversion verification' }, async t => {
   const f = await fixture(t);
   const existingPage = await readFile(path.join(f.pages, 'page_1.webp'));

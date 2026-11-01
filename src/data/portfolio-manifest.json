@@ -148,7 +148,48 @@
         "height": 360
       }
     ],
-    "pages": [],
+    "pages": [
+      {
+        "src": "images/portfolio/page_content/unfamiliar/page_01.webp",
+        "width": 2500,
+        "height": 1000
+      },
+      {
+        "src": "images/portfolio/page_content/unfamiliar/page_02.webp",
+        "width": 2500,
+        "height": 1000
+      },
+      {
+        "src": "images/portfolio/page_content/unfamiliar/page_03.webp",
+        "width": 2500,
+        "height": 1000
+      },
+      {
+        "src": "images/portfolio/page_content/unfamiliar/page_04.webp",
+        "width": 2500,
+        "height": 1000
+      },
+      {
+        "src": "images/portfolio/page_content/unfamiliar/page_05.webp",
+        "width": 2500,
+        "height": 1000
+      },
+      {
+        "src": "images/portfolio/page_content/unfamiliar/page_06.webp",
+        "width": 2500,
+        "height": 1000
+      },
+      {
+        "src": "images/portfolio/page_content/unfamiliar/page_07.webp",
+        "width": 2500,
+        "height": 1901
+      },
+      {
+        "src": "images/portfolio/page_content/unfamiliar/page_08.webp",
+        "width": 2500,
+        "height": 1000
+      }
+    ],
     "keyVisual": {
       "src": "images/portfolio/key_visual/unfamiliar/kv_1.webp",
       "width": 1920,
