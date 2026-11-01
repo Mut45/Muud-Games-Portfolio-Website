@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: 'Gameplay_Main_Dash_Wall_001.mp4',
+  cutSegments: [
+    {
+      start: 2.7223232138254247,
+      end: 8.628189690099589,
+      name: '',
+      selected: true,
+    },
+  ],
+}

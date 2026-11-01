@@ -1,0 +1,71 @@
+[
+  {
+    "slug": "dog_of_war",
+    "clips": [
+      {
+        "src": "images/portfolio/clips/dog_of_war/bark-1.webp",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "src": "images/portfolio/clips/dog_of_war/camp.webp",
+        "width": 640,
+        "height": 358
+      },
+      {
+        "src": "images/portfolio/clips/dog_of_war/speed_line.webp",
+        "width": 640,
+        "height": 380
+      },
+      {
+        "src": "images/portfolio/clips/dog_of_war/wall_dash.webp",
+        "width": 640,
+        "height": 360
+      }
+    ],
+    "pages": [
+      {
+        "src": "images/portfolio/page_content/dog_of_war/page_01.webp",
+        "width": 4000,
+        "height": 1651
+      }
+    ],
+    "keyVisual": {
+      "src": "images/portfolio/key_visual/dog_of_war/key_visual.webp",
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  {
+    "slug": "small",
+    "clips": [
+      {
+        "src": "images/portfolio/clips/small/math_01.webp",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "src": "images/portfolio/clips/small/maze_01.webp",
+        "width": 640,
+        "height": 360
+      },
+      {
+        "src": "images/portfolio/clips/small/teddy_01.webp",
+        "width": 640,
+        "height": 360
+      }
+    ],
+    "pages": [
+      {
+        "src": "images/portfolio/page_content/small/page_01.webp",
+        "width": 3200,
+        "height": 1321
+      }
+    ],
+    "keyVisual": {
+      "src": "images/portfolio/key_visual/small/small_kv.webp",
+      "width": 1920,
+      "height": 1080
+    }
+  }
+]

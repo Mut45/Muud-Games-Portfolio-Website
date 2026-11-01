@@ -18,7 +18,7 @@ export default function createSections(projects, onActivate, onOpen) {
     section.querySelector('.eyebrow').textContent = isAbout ? 'Introduction' : `Game ${String(gameIndex + 1).padStart(2, '0')}`;
     const trigger = section.querySelector('h1 a, h1 button');
     trigger.textContent = project.title;
-    if (isAbout) trigger.href = project.page;
+    if (isAbout) trigger.href = assetUrl(project.page);
     else trigger.addEventListener('click', () => onOpen(project));
     section.querySelector('.project-subtitle').textContent = project.subtitle;
     const hint = document.createElement('div');

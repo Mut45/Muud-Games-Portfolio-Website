@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: 'Trailer_Extra_005.mp4',
+  cutSegments: [
+    {
+      start: 6.6314048646748684,
+      end: 11.420752822495608,
+      name: '',
+      selected: true,
+    },
+  ],
+}

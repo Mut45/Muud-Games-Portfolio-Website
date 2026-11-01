@@ -1,0 +1,29 @@
+{
+  "dog_of_war": {
+    "description": "",
+    "keyVisualPosition": "center 18%",
+    "keyVisualMobilePosition": "60% 35%",
+    "accentColor": "#d46b45",
+    "tags": [
+      "Funny",
+      "4th Wall Breaking",
+      "Casual",
+      "Simulation",
+      "Satire"
+    ],
+    "dateMade": "2026"
+  },
+  "small": {
+    "title": "Small",
+    "description": "",
+    "accentColor": "#1257A4",
+    "tags": [
+      "Horror",
+      "Asymmetrical Co-op",
+      "Atomspheric",
+      "Pscychological",
+      "Survival Horror"
+    ],
+    "dateMade": "2026"
+  }
+}

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "scripts": { "dev": "vite --host 127.0.0.1", "build": "vite build", "preview": "vite preview --host 127.0.0.1" },
+  "scripts": { "dev": "vite --host 127.0.0.1", "build": "vite build", "preview": "vite preview --host 127.0.0.1", "portfolio:manifest": "node scripts/portfolio-media.mjs", "portfolio:convert": "node scripts/convert-portfolio-clips.mjs", "portfolio:update": "node scripts/update-portfolio.mjs", "test:portfolio": "node --test scripts/portfolio-media.test.mjs" },
   "dependencies": { "three": "^0.180.0" },
   "devDependencies": { "vite": "^7.1.0", "sass": "^1.93.0" }
 }

@@ -212,7 +212,7 @@ h1 { font-weight: 400; font-size: clamp(27px * $font-scale, 3vw * $font-scale, 4
 }
 .photo-placeholder { aspect-ratio: 4 / 3; display: grid; place-items: center; border: 1px dashed #d1c4a044; background: #d1c4a008; color: $muted; font-size: 12px * $font-scale; letter-spacing: .1em; text-transform: uppercase; }
 @media (max-width: 699px) {
-  .navigation { height: 80px; padding: 0 24px; gap: 0; justify-content: space-between; .wordmark img { height: 52px; } .nav-note { display: none; } }
+  .navigation { height: 80px; padding: 0 16px; gap: 12px; font-size: clamp(12px, 3.2vw, 16px); justify-content: space-between; .wordmark img { height: 52px; } .nav-note { display: none; } }
   .section-label { top: 110px; left: 24px; right: 24px; font-size: 10px * $font-scale; }
   .project-section { min-height: 540px; }
   .project-caption { bottom: 104px; }
@@ -229,3 +229,5 @@ h1 { font-weight: 400; font-size: clamp(27px * $font-scale, 3vw * $font-scale, 4
   .interest-section { padding: 36px 0; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+@media (min-width: 700px) and (max-width: 1100px) { .navigation { gap: 40px; .nav-note { display: none; } } }

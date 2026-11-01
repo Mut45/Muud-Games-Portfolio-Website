@@ -1,7 +1,9 @@
+import portfolioMetadata from './portfolio-metadata.json';
+
 // Original sample content. Use paths without a leading slash for GitHub Pages.
 export const about = {
   id: 'about', kind: 'about', title: 'About me', subtitle: 'The person behind the games',
-  placeholder: 'portrait', model: 'models/about_me.glb', color: '#d1c4a0', page: 'about.html',
+  placeholder: 'portrait', model: 'models/about_me.glb', color: '#d1c4a0', page: 'about/',
   camera: { azimuth: 0.25, polar: 1.3, distance: 5 }, modelScale: 2,
   introduction: 'I am an aspiring game developer/designer who also has experience in technical art and project management.',
   // Separate description paragraphs with \n\n. Images appear in array order.
@@ -100,5 +102,15 @@ const projects = [
   },
 ];
 
-export const assetUrl = (path) => new URL(`${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`, document.baseURI).href;
+// Nested HTML pages declare their relative site root so public media resolves
+// from the portfolio root, including when hosted under a GitHub Pages repository.
+const siteRoot = new URL(document.querySelector('meta[name="site-root"]')?.content ?? import.meta.env.BASE_URL, document.baseURI);
+// Edit banner text and optional cover overrides in portfolio-metadata.json.
+// portfolio:update adds missing project entries without replacing authored values.
+export { portfolioMetadata };
+export function portfolioDetails(slug) {
+  const existing = projects.find(project => project.id === slug.replaceAll('_', '-'));
+  return { title: existing?.title ?? slug.replaceAll(/[_-]/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase()), description: '', ...portfolioMetadata[slug] };
+}
+export const assetUrl = (path) => new URL(path.replace(/^\/+/, ''), siteRoot).href;
 export default projects;

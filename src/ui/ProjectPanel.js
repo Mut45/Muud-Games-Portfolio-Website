@@ -1,5 +1,6 @@
 import { assetUrl } from '../data/projects.js';
 import ProjectMediaGallery from './ProjectMediaGallery.js';
+import portfolioManifest from '../data/portfolio-manifest.json';
 
 export default class ProjectPanel {
   constructor(onChange) {
@@ -25,7 +26,10 @@ export default class ProjectPanel {
     for (const [key, value] of Object.entries({ title: project.title, subtitle: project.subtitle, description: project.description, role: project.role, tools: project.tools.join(' / '), index: 'Games' })) {
       document.querySelector(`#panel-${key}`).textContent = value;
     }
-    document.querySelector('#panel-link').href = assetUrl(project.page);
+    const portfolioProject = portfolioManifest.find(entry => entry.slug === (project.portfolioSlug ?? project.id.replaceAll('-', '_')));
+    document.querySelector('#panel-link').href = portfolioProject
+      ? `${assetUrl('portfolio/')}#${encodeURIComponent(portfolioProject.slug)}`
+      : assetUrl(project.page);
     this.gallery.setMedia(project.media ?? []);
     this.element.querySelector('.panel-body').scrollTop = 0;
     this.element.inert = false; this.element.setAttribute('aria-hidden', 'false');
