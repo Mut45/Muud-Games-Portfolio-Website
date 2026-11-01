@@ -1,0 +1,28 @@
+{
+  version: 2,
+  mediaFileName: 'teaser_trailer_01.mp4',
+  cutSegments: [
+    {
+      start: 28.05003157820738,
+      name: '',
+      selected: true,
+    },
+    {
+      start: 39.88363865026363,
+      name: '',
+      selected: true,
+    },
+    {
+      start: 69.17546850146456,
+      end: 71.43992417574692,
+      name: '',
+      selected: true,
+    },
+    {
+      start: 81.08212253075571,
+      end: 85.8301747510252,
+      name: '',
+      selected: true,
+    },
+  ],
+}

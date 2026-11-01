@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: 'trailer_02.mp4',
+  cutSegments: [
+    {
+      start: 2.3818686493184633,
+      end: 7.688672,
+      name: '',
+      selected: true,
+    },
+  ],
+}

@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: 'Acquire_Items_002.mp4',
+  cutSegments: [
+    {
+      start: 2.7424596986301366,
+      end: 4.641085643835616,
+      name: '',
+      selected: true,
+    },
+  ],
+}
