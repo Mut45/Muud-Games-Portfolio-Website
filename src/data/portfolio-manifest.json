@@ -26,8 +26,38 @@
     "pages": [
       {
         "src": "images/portfolio/page_content/dog_of_war/page_01.webp",
-        "width": 4000,
-        "height": 1651
+        "width": 3200,
+        "height": 1321
+      },
+      {
+        "src": "images/portfolio/page_content/dog_of_war/page_02.webp",
+        "width": 3200,
+        "height": 1321
+      },
+      {
+        "src": "images/portfolio/page_content/dog_of_war/page_03.webp",
+        "width": 3200,
+        "height": 1321
+      },
+      {
+        "src": "images/portfolio/page_content/dog_of_war/page_04.webp",
+        "width": 3200,
+        "height": 1321
+      },
+      {
+        "src": "images/portfolio/page_content/dog_of_war/page_05.webp",
+        "width": 3200,
+        "height": 1321
+      },
+      {
+        "src": "images/portfolio/page_content/dog_of_war/page_06.webp",
+        "width": 3200,
+        "height": 1321
+      },
+      {
+        "src": "images/portfolio/page_content/dog_of_war/page_07.webp",
+        "width": 3200,
+        "height": 1321
       }
     ],
     "keyVisual": {
@@ -65,7 +95,28 @@
         "height": 360
       }
     ],
-    "pages": [],
+    "pages": [
+      {
+        "src": "images/portfolio/page_content/may_the_best_bower_win/page_01.webp",
+        "width": 3200,
+        "height": 1321
+      },
+      {
+        "src": "images/portfolio/page_content/may_the_best_bower_win/page_02.webp",
+        "width": 3200,
+        "height": 1321
+      },
+      {
+        "src": "images/portfolio/page_content/may_the_best_bower_win/page_03.webp",
+        "width": 3200,
+        "height": 1321
+      },
+      {
+        "src": "images/portfolio/page_content/may_the_best_bower_win/page_04.webp",
+        "width": 3200,
+        "height": 1321
+      }
+    ],
     "keyVisual": {
       "src": "images/portfolio/key_visual/may_the_best_bower_win/kv_1.webp",
       "width": 1920,
