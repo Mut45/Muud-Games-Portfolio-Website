@@ -44,52 +44,56 @@ const placeholderMedia = [
 
 const projects = [
   {
-    id: 'small', title: 'Small', subtitle: 'Co-op Horror Game',
+    id: 'small', title: 'Small', subtitle: 'Co-op Horror Game | Solo Project',
     media: [
       { type: 'youtube', videoId: 'rz8EtRdP3f4', title: 'Small — video' },
       ...placeholderMedia.slice(1),
     ],
     description: 'One day, you wake up to find yourself impossibly SMALL. Your only hope is your best friend, Grey Grey the teddy bear. Together, the two of you must rely on each other to navigate your way through a horrifying maze and find a way out.',
     role: 'Game Designer / Programmer', tools: ['Unity', 'C#', 'Blender', 'Audacity'],
+    developmentCycle: '2 months',
     placeholder: 'structure', model: 'models/game_small.glb', page: 'projects/small.html',
     year: '2026', color: '#c7c5b7', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
     modelScale: 2,
     rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
   {
-    id: 'dog-of-war', title: 'Dog of War', subtitle: 'Action Sandbox War Satire',
+    id: 'dog-of-war', title: 'Dog of War', subtitle: 'Action Sandbox War Satire | Team Project',
     media: [
       { type: 'youtube', videoId: 'Cpi_q6W4fEg', title: 'Dog of War — video' },
       ...placeholderMedia.slice(1),
     ],
     description: 'You wake up to the irresistible smell of meat... oh, and in the middle of the war of the century. What you do next is up to you.',
     role: 'Team Lead / Game Designer / Programmer / Technical Artist', tools: ['Unity', 'C#', 'Substance Painter', 'Blender'],
+    developmentCycle: '2 months',
     placeholder: 'orbit', model: 'models/game_dog_of_war.glb', page: 'projects/dog-of-war.html',
     year: '2026', color: '#a5b3a9', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
     modelScale: 2,
     rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
   {
-    id: 'may-the-best-bower-win', title: 'May the Best Bower Win', subtitle: 'Online 1v1 Hide & Seek',
+    id: 'may-the-best-bower-win', title: 'May the Best Bower Win', subtitle: 'Online 1v1 Hide & Seek | Team Project',
     media: [
       { type: 'youtube', videoId: 'SJfABTCV1qs', title: 'May the Best Bower Win — video' },
       ...placeholderMedia,
     ],
     description: 'In this 1v1 multiplayer game, you play as either King Jack or Joker. Joker can disguise himself and hide, and King Jack needs to catch him. Who will win and take the spot as the best bower?',
     role: 'Team Lead/ Game Designer / Technical Artist', tools: ['Unity', 'C#', 'Photoshop'],
+    developmentCycle: '5 months',
     placeholder: 'signal', model: 'models/game_may_the_best_bower_win.glb', page: 'projects/may-the-best-bower-win.html',
     year: '2026', color: '#c59a7c', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
     modelScale: 2,
     rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
   {
-    id: 'unfamiliar', title: 'Unfamiliar', subtitle: '2D Puzzle Platformer',
+    id: 'unfamiliar', title: 'Unfamiliar', subtitle: '2D Puzzle Platformer | Solo Project',
     media: [
       { type: 'youtube', videoId: 'vMV_MOVQYiQ', title: 'Unfamiliar — video 1' },
       { type: 'youtube', videoId: 'BMPB1h1oTc8', title: 'Unfamiliar — video 2' },
     ],
     description: 'Have you ever wondered how your elemental familiars in RPG games are feeling when you are not busy using them to do your deeds? Well, in this 2D platformer, Flamie, the fire familiar, is not happy, and he wants to break free.',
     role: 'Programmer/ Game Designer / 2D Pixel Artist', tools: ['Aseprite', 'Unity', 'C#'],
+    developmentCycle: '2 months',
     placeholder: 'structure', model: 'models/game_unfamiliar.glb', page: 'projects/unfamiliar.html',
     year: '2026', color: '#c7c5b7', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
     modelScale: 2,

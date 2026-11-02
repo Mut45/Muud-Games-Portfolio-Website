@@ -27,6 +27,7 @@ export default class ProjectPanel {
       document.querySelector(`#panel-${key}`).textContent = value;
     }
     const portfolioProject = portfolioManifest.find(entry => entry.slug === (project.portfolioSlug ?? project.id.replaceAll('-', '_')));
+    document.querySelector('#panel-development-cycle').textContent = project.developmentCycle || 'Details coming soon';
     document.querySelector('#panel-link').href = portfolioProject
       ? `${assetUrl('portfolio/')}#${encodeURIComponent(portfolioProject.slug)}`
       : assetUrl(project.page);
