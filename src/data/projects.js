@@ -7,13 +7,7 @@ export const about = {
   placeholder: 'portrait', model: 'models/about_me.glb', color: '#d1c4a0', page: 'about/',
   camera: { azimuth: 0.25, polar: 1.3, distance: 5 }, modelScale: 2,
   introduction: 'I am an aspiring game developer/designer who also has experience in technical art and project management.',
-  // Separate description paragraphs with \n\n. Images appear in array order.
-  // images: [{ src: 'images/about/photo.jpg', alt: 'What the photo shows', caption: 'Description below the photo' }]
-  // For mixed galleries, use media instead of images (existing images arrays still work):
-  // media: [{ type: 'image', src: 'images/about/photo.jpg', alt: 'Photo description', caption: 'Caption' },
-  //   { type: 'audio', src: 'audio/commentary.mp3', poster: 'images/about/cover.jpg', caption: 'Audio caption' },
-  //   { type: 'video', src: 'videos/clip.mp4', poster: 'images/about/cover.jpg', caption: 'Video caption' }]
-  // poster is optional. Media files live in public/; omit public/ from these paths.
+
   interests: [
     { id: 'interest-one', title: 'Competitive Game Coaching', description: 'I peaked at #97 in Apex Legends during Competitive Season 3 and have ranked within the top 300 across multiple seasons, playing on both keyboard and mouse and controller. I also reached Immortal in Valorant on both the Hong Kong and North American servers. \n\nMore recently, I have been coaching players who want to improve and rank up in competitive shooters. My coaching covers VOD reviews, general strategy, gaming peripheral setups, and healthy posture habits for long gaming sessions.', images: [{ src: 'images/about/coaching_01.png', alt: 'Competitive game coaching', caption: 'Me talking to one of my students about the importance of posture' }, { src: 'images/about/coaching_02.jpg', alt: 'Apex Predator rank in Apex Legends', caption: 'I reached Apex Predator(top #750 in the world) across multiple seasons on both mouse & keyboard and controller' }] },
     { id: 'interest-two', title: 'Road to become the jack of all "100 useless things that you most likely can\'t make a living doing."', 
@@ -50,54 +44,54 @@ const placeholderMedia = [
 
 const projects = [
   {
-    id: 'small', title: 'Small', subtitle: 'A co-op horror game',
+    id: 'small', title: 'Small', subtitle: 'Co-op Horror Game',
     media: [
       { type: 'youtube', videoId: 'rz8EtRdP3f4', title: 'Small — video' },
       ...placeholderMedia.slice(1),
     ],
     description: 'One day, you wake up to find yourself impossibly SMALL. Your only hope is your best friend, Grey Grey the teddy bear. Together, the two of you must rely on each other to navigate your way through a horrifying maze and find a way out.',
-    role: 'Game design / Programming', tools: ['Unity', 'C#', 'Blender', 'Audacity'],
+    role: 'Game Designer / Programmer', tools: ['Unity', 'C#', 'Blender', 'Audacity'],
     placeholder: 'structure', model: 'models/game_small.glb', page: 'projects/small.html',
     year: '2026', color: '#c7c5b7', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
     modelScale: 2,
     rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
   {
-    id: 'dog-of-war', title: 'Dog of War', subtitle: 'An action sandbox war satire',
+    id: 'dog-of-war', title: 'Dog of War', subtitle: 'Action Sandbox War Satire',
     media: [
       { type: 'youtube', videoId: 'Cpi_q6W4fEg', title: 'Dog of War — video' },
       ...placeholderMedia.slice(1),
     ],
-    description: 'A small world with its own gravity. Follow unfamiliar signals and discover what remains on the other side of the horizon.',
-    role: 'Game design / Programming', tools: ['Unity', 'C#', 'Substance Painter', 'Blender'],
+    description: 'You wake up to the irresistible smell of meat... oh, and in the middle of the war of the century. What you do next is up to you.',
+    role: 'Team Lead / Game Designer / Programmer / Technical Artist', tools: ['Unity', 'C#', 'Substance Painter', 'Blender'],
     placeholder: 'orbit', model: 'models/game_dog_of_war.glb', page: 'projects/dog-of-war.html',
-    year: '02', color: '#a5b3a9', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
+    year: '2026', color: '#a5b3a9', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
     modelScale: 2,
     rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
   {
-    id: 'may-the-best-bower-win', title: 'May the Best Bower Win', subtitle: 'An atmospheric adventure',
+    id: 'may-the-best-bower-win', title: 'May the Best Bower Win', subtitle: 'Online 1v1 Hide & Seek',
     media: [
       { type: 'youtube', videoId: 'SJfABTCV1qs', title: 'May the Best Bower Win — video' },
       ...placeholderMedia,
     ],
-    description: 'Somewhere between the stations, a signal is still repeating. Piece together its fragments in a quiet world of forgotten machines.',
-    role: 'Game design / Technical art', tools: ['Unity', 'C#', 'Blender'],
+    description: 'In this 1v1 multiplayer game, you play as either King Jack or Joker. Joker can disguise himself and hide, and King Jack needs to catch him. Who will win and take the spot as the best bower?',
+    role: 'Team Lead/ Game Designer / Technical Artist', tools: ['Unity', 'C#', 'Photoshop'],
     placeholder: 'signal', model: 'models/game_may_the_best_bower_win.glb', page: 'projects/may-the-best-bower-win.html',
-    year: '03', color: '#c59a7c', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
+    year: '2026', color: '#c59a7c', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
     modelScale: 2,
     rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },
   {
-    id: 'unfamiliar', title: 'Unfamiliar', subtitle: 'Game project',
+    id: 'unfamiliar', title: 'Unfamiliar', subtitle: '2D Puzzle Platformer',
     media: [
       { type: 'youtube', videoId: 'vMV_MOVQYiQ', title: 'Unfamiliar — video 1' },
       { type: 'youtube', videoId: 'BMPB1h1oTc8', title: 'Unfamiliar — video 2' },
     ],
-    description: 'Project details coming soon.',
-    role: 'Details coming soon', tools: ['Details coming soon'],
+    description: 'Have you ever wondered how your elemental familiars in RPG games are feeling when you are not busy using them to do your deeds? Well, in this 2D platformer, Flamie, the fire familiar, is not happy, and he wants to break free.',
+    role: 'Programmer/ Game Designer / 2D Pixel Artist', tools: ['Aseprite', 'Unity', 'C#'],
     placeholder: 'structure', model: 'models/game_unfamiliar.glb', page: 'projects/unfamiliar.html',
-    year: '04', color: '#c7c5b7', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
+    year: '2026', color: '#c7c5b7', camera: { azimuth: 0.45, polar: 1.2, distance: 5.4 },
     modelScale: 2,
     rotationOffset: [Math.PI / 3, 0, 0], // Tilt forward 60 degrees.
   },

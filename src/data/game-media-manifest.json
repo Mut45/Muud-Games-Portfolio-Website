@@ -82,5 +82,109 @@
       "width": 1920,
       "height": 1080
     }
+  ],
+  "small": [
+    {
+      "src": "images/games/small/0920_atomsphere 1.webp",
+      "width": 1920,
+      "height": 1079
+    },
+    {
+      "src": "images/games/small/possum-00029 1.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small_play_test-00004 1.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small_play_test-00013 1.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small-00012.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small-00036.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small-00050.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small-00073.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small-00077.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small-00088.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small-00091.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small-00092.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small-00094.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/small/small-00100.webp",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "unfamiliar": [
+    {
+      "src": "images/games/unfamiliar/unfamiliar-00001.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/unfamiliar/unfamiliar-00002.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/unfamiliar/unfamiliar-00003.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/unfamiliar/unfamiliar-00004.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/unfamiliar/unfamiliar-00005.webp",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "src": "images/games/unfamiliar/unfamiliar-00006.webp",
+      "width": 1920,
+      "height": 1080
+    }
   ]
 }
